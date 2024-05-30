@@ -1,5 +1,7 @@
 from sklearn.base import BaseEstimator, ClassifierMixin
 from sklearn.svm import SVC
+
+
 class Model(BaseEstimator, ClassifierMixin):
     def __init__(self, C=1.0, kernel='rbf', degree=3, gamma='scale'):
         self.C = C
