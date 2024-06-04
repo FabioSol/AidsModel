@@ -3,10 +3,12 @@ import optuna
 from sklearn.model_selection import train_test_split
 import pandas as pd
 from evaluate_model import evaluate_model
+from data_split import data_split
 
 
-def optimize_hyperparameters(X: pd.DataFrame, y: pd.DataFrame) -> optuna.study:
+def optimize_hyperparameters(df: pd.DataFrame) -> optuna.study:
     study = optuna.create_study(direction='maximize')
+    X_train, X_test, y_train, y_test = data_split(df)
 
     def objective(trial):
         # Suggest values for hyperparameters
@@ -17,7 +19,6 @@ def optimize_hyperparameters(X: pd.DataFrame, y: pd.DataFrame) -> optuna.study:
 
         model_ = Model(C=C, kernel=kernel, degree=degree, gamma=gamma)
 
-        X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
 
         # Train the model
         model_.fit(X_train, y_train)

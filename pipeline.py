@@ -1,6 +1,6 @@
 from sklearn.pipeline import Pipeline
-from preprocessing import Preprocess
-from model import Model
+from AidsModel.preprocessing import Preprocess
+from AidsModel.model import Model
 
 
 def create_pipeline(**kwargs):
