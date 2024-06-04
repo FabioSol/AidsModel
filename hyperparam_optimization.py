@@ -28,3 +28,4 @@ def optimize_hyperparameters(X:pd.DataFrame,y:pd.DataFrame)->optuna.study:
         return accuracy
     study.optimize(objective, n_trials=100)
     return study
+
