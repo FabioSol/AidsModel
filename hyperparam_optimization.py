@@ -1,10 +1,11 @@
 from model import Model
 import optuna
 from sklearn.model_selection import train_test_split
-from sklearn.metrics import accuracy_score
 import pandas as pd
+from evaluate_model import evaluate_model
 
-def optimize_hyperparameters(X:pd.DataFrame,y:pd.DataFrame)->optuna.study:
+
+def optimize_hyperparameters(X: pd.DataFrame, y: pd.DataFrame) -> optuna.study:
     study = optuna.create_study(direction='maximize')
 
     def objective(trial):
@@ -23,9 +24,10 @@ def optimize_hyperparameters(X:pd.DataFrame,y:pd.DataFrame)->optuna.study:
 
         # Predict and calculate accuracy
         y_pred = model_.predict(X_test)
-        accuracy = accuracy_score(y_test, y_pred)
+        metric = evaluate_model(y_test, y_pred)
 
-        return accuracy
+        return metric
+
     study.optimize(objective, n_trials=100)
-    return study
 
+    return study.best_trial
