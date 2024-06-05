@@ -1,6 +1,5 @@
-from model import Model
+from AidsModel.model import Model
 import optuna
-from sklearn.model_selection import train_test_split
 import pandas as pd
 from evaluate_model import evaluate_model
 from data_split import data_split

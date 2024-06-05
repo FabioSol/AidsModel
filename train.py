@@ -1,5 +1,5 @@
-from pipeline import create_pipeline
-from evaluate_model import evaluate_model
+from AidsModel.pipeline import create_pipeline
+from AidsModel.evaluate_model import evaluate_model
 import pickle
 
 
