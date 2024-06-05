@@ -1,8 +1,8 @@
 from AidsModel.model import Model
 import optuna
 import pandas as pd
-from evaluate_model import evaluate_model
-from data_split import data_split
+from AidsModel.evaluate_model import evaluate_model
+from AidsModel.data_split import data_split
 
 
 def optimize_hyperparameters(df: pd.DataFrame) -> optuna.study:
